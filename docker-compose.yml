@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  autobrr-discord-bot:
+    build: .
+    container_name: autobrr-discord-bot
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
+      - AUTOBRR_BASE_URL=${AUTOBRR_BASE_URL}
+      - AUTOBRR_API_KEY=${AUTOBRR_API_KEY}
+      - AUTOBRR_USERNAME=${AUTOBRR_USERNAME}
+      - AUTOBRR_PASSWORD=${AUTOBRR_PASSWORD}
+      - ALLOWED_ROLES=${ALLOWED_ROLES}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - autobrr-network
+    depends_on:
+      - autobrr
+    
+  # Optional: Include Autobrr service if running in the same stack
+  autobrr:
+    image: ghcr.io/autobrr/autobrr:latest
+    container_name: autobrr
+    restart: unless-stopped
+    ports:
+      - "7474:7474"
+    volumes:
+      - ./autobrr-config:/config
+    environment:
+      - AUTOBRR__HOST=0.0.0.0
+      - AUTOBRR__PORT=7474
+      - AUTOBRR__LOG_LEVEL=INFO
+    networks:
+      - autobrr-network
+
+networks:
+  autobrr-network:
+    driver: bridge
+
+volumes:
+  autobrr-config:
+    driver: local
