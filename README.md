@@ -1,4 +1,4 @@
-![Bottrr](bottrrbanner.png)
+![Bottrr](bottrrlogo.png)
 
 # Bottrr - Autobrr Discord Bot
 
