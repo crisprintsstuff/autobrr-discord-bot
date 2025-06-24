@@ -1,3 +1,5 @@
+![Bottrr](https://ibb.co/xqw3L85k)
+
 # Bottrr - Autobrr Discord Bot
 
 A comprehensive Discord bot for managing Autobrr through Discord slash commands. This bot provides an intuitive interface to monitor downloads, manage filters, view system status, and handle administrative tasks directly from Discord.
