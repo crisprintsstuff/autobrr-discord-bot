@@ -1,4 +1,4 @@
-![Bottrr](https://ibb.co/xqw3L85k)
+![Bottrr](bottrrlogo.png)
 
 # Bottrr - Autobrr Discord Bot
 
